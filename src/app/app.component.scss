@@ -1,0 +1,42 @@
+table {
+  width: 1400px;
+  border: 1px solid black;
+  text-align: center;
+}
+th,td, tr{
+  border: 1px solid black;
+}
+
+#txtAlign{
+  text-align: center;
+}
+
+.sortButton{
+  position: relative;
+  left: 20px;
+
+}
+
+.sortButton2{
+  position: relative;
+  left: 40px;
+}
+
+.randomButton{
+  position: relative;
+  left: 40px;
+}
+
+th.mat-header-cell{
+  text-align: center;
+}
+
+.backButton{
+  position: relative;
+  left: 40px;
+}
+
+.searchButton{
+  position: relative;
+  left: 20px;
+}

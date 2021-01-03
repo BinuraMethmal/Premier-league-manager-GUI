@@ -1,0 +1,195 @@
+<div>
+  <title>{{title}}</title>
+  <h1>Premier League Manager</h1>
+</div>
+
+<!--Match Data Table-->
+<article>
+  <div>
+    <h3>Match Data Table</h3>
+    <div>
+
+      <!--Search Bar Design-->
+      <label> Enter Date </label>
+      <input #box (keyup)="onEnter(box.value)">
+      <p>{{dateValue}}</p>
+
+      <button (click)="searchByDate()" class="searchButton">
+        <p>Search</p>
+      </button>
+
+      <button (click)="back()" class="backButton">
+        <p>Back</p>
+      </button>
+
+    </div>
+    <br>
+    <table mat-table [dataSource]="matchDataSource">
+      <!-- Team 1 Column -->
+      <ng-container matColumnDef="teamOne">
+        <th mat-header-cell *matHeaderCellDef> Team One</th>
+        <td mat-cell *matCellDef="let element"> {{element.teamOne}} </td>
+      </ng-container>
+
+      <!-- Team 2 Column -->
+      <ng-container matColumnDef="teamTwo">
+        <th mat-header-cell *matHeaderCellDef> Team Two</th>
+        <td mat-cell *matCellDef="let element"> {{element.teamTwo}} </td>
+      </ng-container>
+
+      <!-- Match Date Column -->
+      <ng-container matColumnDef="matchDate">
+        <th mat-header-cell *matHeaderCellDef> DOM</th>
+        <td mat-cell *matCellDef="let element"> {{element.matchDate.date}} </td>
+      </ng-container>
+
+      <!-- T1 Scored Gaols Column -->
+      <ng-container matColumnDef="team1ScoredGoals">
+        <th mat-header-cell *matHeaderCellDef> T1 Scored Gaols</th>
+        <td mat-cell *matCellDef="let element"> {{element.team1GoalsScored}} </td>
+      </ng-container>
+
+      <!-- T2 Scored Gaols Column -->
+      <ng-container matColumnDef="team2ScoredGoals">
+        <th mat-header-cell *matHeaderCellDef> T2 Scored Gaols</th>
+        <td mat-cell *matCellDef="let element"> {{element.team2GoalsScored}} </td>
+      </ng-container>
+
+      <!-- T1 Received Gaols Column -->
+      <ng-container matColumnDef="team1ReceivedGoals">
+        <th mat-header-cell *matHeaderCellDef> T1 Received Gaols</th>
+        <td mat-cell *matCellDef="let element"> {{element.team1GoalsReceived}} </td>
+      </ng-container>
+
+      <!-- T2 Received Column -->
+      <ng-container matColumnDef="team2ReceivedGoals">
+        <th mat-header-cell *matHeaderCellDef> T2 Received Gaols</th>
+        <td mat-cell *matCellDef="let element"> {{element.team2GoalsReceived}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="MatchTableColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: MatchTableColumns;"></tr>
+    </table>
+  </div>
+</article>
+
+<br>
+
+<!-- Buttons of Match Data Table-->
+<div>
+  <br>
+  <!--Sort by Date Button-->
+  <button (click)="sortMatchByDate()" class="sortButton">
+    <p>Sort by Date</p>
+  </button>
+
+  <!--Random Match Button-->
+  <button (click)="generateRandomMatch()" class="randomButton">
+    <p>Generate Random Match</p>
+  </button>
+</div>
+
+<!-- Club Data Table-->
+<article>
+  <div>
+    <h3>Club Data Table</h3>
+    <table mat-table [dataSource]="clubDataSource" class="mat-elevation-z8">
+
+      <!-- Club Name Column -->
+      <ng-container matColumnDef="clubName">
+        <th mat-header-cell *matHeaderCellDef> Club Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubName}} </td>
+      </ng-container>
+
+      <!-- Address Line 1  Column -->
+      <ng-container matColumnDef="clubAddress1">
+        <th mat-header-cell *matHeaderCellDef> Address Line 1</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubAddress1}} </td>
+      </ng-container>
+
+      <!-- City Column -->
+      <ng-container matColumnDef="clubCity">
+        <th mat-header-cell *matHeaderCellDef> City</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubCity}} </td>
+      </ng-container>
+
+      <!-- Zip-Code Column -->
+      <ng-container matColumnDef="clubZipCode">
+        <th mat-header-cell *matHeaderCellDef> Zip-Code</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubZipCode}} </td>
+      </ng-container>
+
+      <!-- Country Column -->
+      <ng-container matColumnDef="clubCountry">
+        <th mat-header-cell *matHeaderCellDef> Country</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubCountry}} </td>
+      </ng-container>
+
+      <!-- Wins Column -->
+      <ng-container matColumnDef="clubWins">
+        <th mat-header-cell *matHeaderCellDef> Wins</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubWins}} </td>
+      </ng-container>
+
+      <!-- Defeats Column -->
+      <ng-container matColumnDef="clubDefeats">
+        <th mat-header-cell *matHeaderCellDef> Defeats</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubDefeats}} </td>
+      </ng-container>
+
+      <!-- Draws Column -->
+      <ng-container matColumnDef="clubDraws">
+        <th mat-header-cell *matHeaderCellDef> Draws</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubDraws}} </td>
+      </ng-container>
+
+      <!-- Scored Gaols Column -->
+      <ng-container matColumnDef="clubGoalsScored">
+        <th mat-header-cell *matHeaderCellDef> Scored Gaols</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubGoalsScored}} </td>
+      </ng-container>
+
+      <!-- Received Gaols Column -->
+      <ng-container matColumnDef="clubGoalsReceived">
+        <th mat-header-cell *matHeaderCellDef> Received Gaols</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubGoalsReceived}} </td>
+      </ng-container>
+
+      <!-- Points Column -->
+      <ng-container matColumnDef="clubPoints">
+        <th mat-header-cell *matHeaderCellDef> Points</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubMatches}} </td>
+      </ng-container>
+
+      <!-- Matches Column -->
+      <ng-container matColumnDef="clubMatches">
+        <th mat-header-cell *matHeaderCellDef> Matches</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubMatches}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="ClubTableColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: ClubTableColumns;"></tr>
+    </table>
+  </div>
+</article>
+
+<br>
+
+<!-- Buttons of Club Data Table-->
+<div>
+  <br>
+  <!--Sort By Goals Button-->
+  <button (click)="sortClubByGoals()" class="sortButton">
+    <p>Sort By Goals</p>
+  </button>
+
+  <!--Sort by Wins Button-->
+  <button (click)="sortClubByWins()" class="sortButton2">
+    <p>Sort by Wins</p>
+  </button>
+</div>
+
+<br>
+
+
+
